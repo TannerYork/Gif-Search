@@ -18,7 +18,4 @@ Run the server:
 flask run
 ```
 
-You may get some errors at first, because the starter code is not complete. Don't worry; the errors are pointing you towards what needs to be done to run the project!
-
-We have added TODOs throughout the code to further help you to complete the project. Good luck!
 # gif-search
