@@ -11,9 +11,9 @@
 
 {% block content %}
 <div class="content">
-    <!-- {% for gif in gifs %}
-        <li>{{ gif }}</li>
-    {% endfor %} -->
+    {% for gif in gifs %}
+        {% inclued 'gif.html' %}
+    {% endfor %}
 </div>
 {% endblock %}
 
