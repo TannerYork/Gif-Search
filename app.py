@@ -10,16 +10,18 @@ def index():
     """Return homepage."""
     # TODO: Extract query term from url
     query_term = 'cats'
-    key="9KNYSIPBLNC1"
+    key = "9KNYSIPBLNC1"
     
     # TODO: Make 'params' dict with query term and API key
     params = {
         "q": query_term,
-        "Key": key,
-        "Limit": 10
+        "key": key,
+        "limit": 10
     }
 
     # TODO: Make an API call to Tenor using the 'requests' library
+    response = requests.get('https://api.tenor.com/v1/search', params=params)
+    return response.json()
 
     # TODO: Get the first 10 results from the search results
 
