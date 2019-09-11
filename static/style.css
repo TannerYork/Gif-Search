@@ -45,4 +45,12 @@ header .search button {
     padding: 10px;
     font-size: 20px;
     color: #333;
+    outline: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }
