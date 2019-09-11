@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     """Return homepage."""
     # TODO: Extract query term from url
-    query_term = 'cats'
+    query_term = request.args.get('query')
     key = "9KNYSIPBLNC1"
     limit = 10
     
