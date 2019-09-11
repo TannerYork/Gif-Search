@@ -21,13 +21,13 @@ def index():
 
     # TODO: Make an API call to Tenor using the 'requests' library
     response = requests.get('https://api.tenor.com/v1/search', params=params)
-    
+    return response.json()
 
     # TODO: Get the first 10 results from the search results
 
     # TODO: Render the 'index.html' template, passing the gifs as a named parameter
 
-    return render_template("index.html", gifs=gifs)
+    return render_template("index.html")
 
 
 if __name__ == '__main__':

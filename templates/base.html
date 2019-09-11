@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>GIF Search</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
     {% block head %}{% endblock %}
-    {% block body %}{% endblock %}
-    <!-- Include the Tenor JavaScript to fill in GIFs appropriately -->
+    {% block content %}{% endblock %}
     <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 </body>
 </html>
