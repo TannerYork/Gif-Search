@@ -3,8 +3,9 @@
 {% block head %}
 <header>
     <h1>Gif Search</h1>
-    <form class="search">
-        <input type="text" name="query"><button type="submit">Search</button>
+    <a href="/speak"><h2>Speak</h2></a>
+    <form class="search" action="/results">
+        <input type="text" name="query"><button type="submit">Search</button></input>
     </form>
 </header>
 {% endblock %}
