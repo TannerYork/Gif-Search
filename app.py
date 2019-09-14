@@ -45,7 +45,7 @@ def results():
     print("Querying Tenor API...")
     query = request.args.get('query')
     key = "9KNYSIPBLNC1"
-    limit = 10
+    limit = 12
 
     # TODO: Make 'params' dict with query term and API key
     params = {

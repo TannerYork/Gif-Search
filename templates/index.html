@@ -2,11 +2,14 @@
 
 {% block head %}
 <header>
-    <h1>Gif Search</h1>
-    <a href="/speak"><h2>Speak</h2></a>
-    <form class="search" action="/results">
-        <input type="text" name="query"><button type="submit">Search</button></input>
-    </form>
+    <h1><a href="/">Gif Search</a></h1>
+    <div class="search">
+        <form class="search-box" action="/results">
+            <input type="text" name="query" class="search-input"></input>
+            <a class="search-speak" href="/speak" title="speak"></a>
+            <button class="search-text" type="submit">Search</button>
+        </form>
+    </div>
 </header>
 {% endblock %}
 
