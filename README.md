@@ -1,9 +1,18 @@
 # How to Use This Code
 
-Install Flask:
+Install Flask and speech recognition module:
 
 ```bash
 pip3 install flask
+```
+
+```bash
+pip3 install SpeechRecognition
+```
+
+You can test if the module is installed with the following command
+```bash
+python3 -m speech_recognition
 ```
 
 Set up Flask to run in development environment:
@@ -19,3 +28,5 @@ flask run
 ```
 
 # gif-search
+<h3>You have options to use both Speech Recognition to look for the 
+Gifs you want or you can also simply search in the search bar</h3>
