@@ -16,11 +16,19 @@
 {% block content %}
 <div class="content">
     {% if not gifs %}
-        <h3>
-        <br>
-        Welcome to Gif Search.<br><br> You can either press the microphone button and speak to get your Gifs
-        or simple search through the search bar
-        </h3>
+        <div class="home">
+            <h1>Welcome To Gif Search</h1>
+            <p>If you're having any trouble with the page, simply press the main title to get back here for help.</p>
+            <div class="home-row">
+                <h3>How To Use This Website</h3>
+                <ol>
+                    <li>Think of gifs you want to see</li>
+                    <li>Hit the mirophone to search for gifs through speech</li>
+                    <li>Enter text and hit search to search for gifs in a more traditional way</li>
+                    <li>Enjoy your GIFS!!!</li>
+                </ol>
+            </div>
+        </div>
     {% endif %}
     {% for gif in gifs %}
         {% include 'gif.html' %}
