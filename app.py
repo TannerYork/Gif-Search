@@ -35,7 +35,6 @@ def index():
 
 @app.route('/speak')
 def speak():
-    # TODO: Extract query term from url
     query = recognize_speech()
     return redirect('/results?query=' + escape(query))
 
@@ -47,21 +46,17 @@ def results():
     key = "9KNYSIPBLNC1"
     limit = 12
 
-    # TODO: Make 'params' dict with query term and API key
     params = {
         "q": query,
         "key": key,
         "limit": limit
     }
 
-    # TODO: Make an API call to Tenor using the 'requests' library
     response = requests.get('https://api.tenor.com/v1/search', params=params)
 
-    # TODO: Get the GIFs from the search results
     gifs = response.json()["results"]
 
     print("Rendering GIFs...")
-    # TODO: Render the 'index.html' template, passing the gifs as a named parameter
     return render_template("index.html", gifs=gifs)
 
 
