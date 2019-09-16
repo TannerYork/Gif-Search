@@ -1,6 +1,6 @@
 # How to Use This Code
 
-Install Flask and speech recognition module:
+Install Flask, SpeechRecongition, PortAudio, and PyAudio modules:
 
 ```bash
 pip3 install flask
@@ -8,6 +8,11 @@ pip3 install flask
 
 ```bash
 pip3 install SpeechRecognition
+```
+```bash
+brew install portaudio
+brew link --overwrite portaudio
+pip3 install pyaudio
 ```
 
 You can test if the module is installed with the following command
