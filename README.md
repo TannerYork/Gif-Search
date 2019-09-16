@@ -12,6 +12,7 @@ pip3 install SpeechRecognition
 ```bash
 brew install portaudio
 brew link --overwrite portaudio
+pip3 install portaudio
 pip3 install pyaudio
 ```
 
