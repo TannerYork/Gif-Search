@@ -26,21 +26,8 @@ def recognize_speech():
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
-    """Return homepage."""
-    return render_template("index.html", gifs=[])
-
-
-@app.route('/speak')
-def speak():
-    query = recognize_speech()
-    return redirect('/results?query=' + escape(query))
-
-
-@app.route('/results')
-def results():
     print("Querying Tenor API...")
     query = request.args.get('query')
     key = "9KNYSIPBLNC1"
@@ -59,6 +46,10 @@ def results():
     print("Rendering GIFs...")
     return render_template("index.html", gifs=gifs)
 
+@app.route('/speak')
+def speak():
+    query = recognize_speech()
+    return redirect('/?query=' + escape(query))
 
 if __name__ == '__main__':
     print("Starting Flask server...")
