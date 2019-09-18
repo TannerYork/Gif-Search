@@ -5,7 +5,7 @@
     <h1><a href="/">Gif Search</a></h1>
     <div class="search">
         <form class="search-box">
-            <input type="text" name="query" class="search-input"></input>
+            <input type="text" name="query" id="search-input" class="search-input"></input>
             <a class="search-speak" href="/speak" title="speak"></a>
             <button class="search-text" type="submit">Search</button>
         </form>
@@ -14,12 +14,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="content">
-    {% if not gifs %}
-        {% include 'error.html' %}
-    {% endif %}
-    {% for gif in gifs %}
-        {% include 'gif.html' %}
-    {% endfor %}
+<div class="content" id="content">
+    {% include 'gif.html' %}
 </div>
 {% endblock %}

@@ -26,7 +26,7 @@ def recognize_speech():
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     print("Querying Tenor API...")
     query = request.args.get('query')
@@ -45,6 +45,16 @@ def index():
 
     print("Rendering GIFs...")
     return render_template("index.html", gifs=gifs)
+
+@app.route('/typeahead', methods=['POST', 'GET'])
+def typeahead():
+    key = "9KNYSIPBLNC1"
+    user_input = ''
+    if 'user_input' in request.form:
+        user_input = request.form['user_input']
+    response = requests.get(f'https://api.tenor.com/v1/search?key={key}&q={user_input}&limit={12}')
+    gifs = response.json()["results"]
+    return render_template("gif.html", gifs=gifs)
 
 @app.route('/speak')
 def speak():
