@@ -1,7 +1,7 @@
 # How to Use This Code
 
-=======
-Install Flask, SpeechRecongition, PortAudio, and PyAudio modules:
+
+Install Flask, SpeechRecognition, PortAudio, and PyAudio modules:
 
 
 ```bash

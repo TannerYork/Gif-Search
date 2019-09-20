@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<!--Following is the header tag mainly displaying the button, mic icon and the search bar-->
+
 <header>
     <h1><a href="/">Gif Search</a></h1>
     <div class="search">
@@ -16,9 +18,12 @@
 {% block content %}
 <div class="content">
     {% if not gifs %}
+    <!--If no gifs are found, the default error page is shown stating that no related Gifs were found-->
         {% include 'error.html' %}
     {% endif %}
     {% for gif in gifs %}
+    <!--For each gif in the list of 12 gifs, use the Gif.html document to structure them-->
+
         {% include 'gif.html' %}
     {% endfor %}
 </div>
