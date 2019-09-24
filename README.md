@@ -1,8 +1,6 @@
 # How to Use This Code
 
-
-Install Flask, SpeechRecognition, PortAudio, and PyAudio modules:
-
+Install Flask, SpeechRecongition, PortAudio, and PyAudio modules:
 
 ```bash
 pip3 install flask
