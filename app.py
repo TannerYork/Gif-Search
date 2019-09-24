@@ -2,8 +2,13 @@
 
 from flask import Flask, render_template, request, redirect, escape
 import requests
-import json
 import os
+
+"""
+The following function will take the speech input from the user
+and store it in 'words' variable which we can later pass on
+to the query string since it is stored as a string
+"""
 
 
 def recognize_speech():
@@ -27,6 +32,11 @@ def recognize_speech():
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
+"""
+This is the homepage. It will call the Tenor API
+and parse the returned JSON response and store the desired
+gifs into a list which we will later show in our HTML file
+"""
 def index():
     print("Querying Tenor API...")
     query = request.args.get('query')
@@ -56,6 +66,12 @@ def typeahead():
     gifs = response.json()["results"]
     return render_template("gif.html", gifs=gifs)
 
+"""
+The following function is for searching using Voice command.
+This route will be used when the microphone Icon is pressed
+it will call the previous speech function and pass the returned string as
+a query string
+"""
 @app.route('/speak')
 def speak():
     query = recognize_speech()
@@ -66,4 +82,3 @@ if __name__ == '__main__':
     # host = os.getenv('IP', '0.0.0.0')  # slow to bind host 0.0.0.0
     port = int(os.getenv('PORT', 4444))
     app.run(port=port, debug=True)
-
