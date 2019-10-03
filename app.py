@@ -1,19 +1,19 @@
-#!/usr/bin/env python3
-
 from flask import Flask, render_template, request, redirect, escape
+from dotenv import load_dotenv
+import speech_recognition as sr
 import requests
 import os
 
-"""
-The following function will take the speech input from the user
-and store it in 'words' variable which we can later pass on
-to the query string since it is stored as a string
-"""
-
+load_dotenv()
+TENOR_API_KEY = os.getenv('TENOR_API_KEY')
+app = Flask(__name__)
 
 def recognize_speech():
-    import speech_recognition as sr
-    
+    """
+    A function that will take the speech input from the user
+    and store it in 'words' variable which we can later pass on
+    to the query string since it is stored as a string
+    """
     # get audio from the microphone
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -28,37 +28,26 @@ def recognize_speech():
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
-
-app = Flask(__name__)
-
 @app.route('/', methods=['GET', 'POST'])
-"""
-This is the homepage. It will call the Tenor API
-and parse the returned JSON response and store the desired
-gifs into a list which we will later show in our HTML file
-"""
 def index():
+    """
+    The homepage route. This will call the Tenor API
+    and parse the returned JSON response and store the desired
+    gifs into a list which we will later show in our HTML file
+    """
     print("Querying Tenor API...")
     query = request.args.get('query')
-    key = "9KNYSIPBLNC1"
+    key = TENOR_API_KEY
     limit = 12
-
-    params = {
-        "q": query,
-        "key": key,
-        "limit": limit
-    }
-
+    params = { "q": query, "key": key, "limit": limit}
     response = requests.get('https://api.tenor.com/v1/search', params=params)
-
     gifs = response.json()["results"]
-
     print("Rendering GIFs...")
     return render_template("index.html", gifs=gifs)
 
 @app.route('/typeahead', methods=['POST', 'GET'])
 def typeahead():
-    key = "9KNYSIPBLNC1"
+    key = TENOR_API_KEY
     user_input = ''
     if 'user_input' in request.form:
         user_input = request.form['user_input']
@@ -66,14 +55,14 @@ def typeahead():
     gifs = response.json()["results"]
     return render_template("gif.html", gifs=gifs)
 
-"""
-The following function is for searching using Voice command.
-This route will be used when the microphone Icon is pressed
-it will call the previous speech function and pass the returned string as
-a query string
-"""
 @app.route('/speak')
 def speak():
+    """
+    A function for searching gifs using Voice command.
+    This route will be used when the microphone Icon is pressed
+    it will call the previous speech function and pass the returned string as
+    a query string
+    """
     query = recognize_speech()
     return redirect('/?query=' + escape(query))
 
