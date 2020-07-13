@@ -8,6 +8,7 @@ load_dotenv()
 TENOR_API_KEY = os.getenv('TENOR_API_KEY')
 app = Flask(__name__)
 
+
 def recognize_speech():
     """
     A function that will take the speech input from the user
@@ -28,6 +29,7 @@ def recognize_speech():
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """
@@ -39,11 +41,12 @@ def index():
     query = request.args.get('query')
     key = TENOR_API_KEY
     limit = 12
-    params = { "q": query, "key": key, "limit": limit}
+    params = {"q": query, "key": key, "limit": limit}
     response = requests.get('https://api.tenor.com/v1/search', params=params)
     gifs = response.json()["results"]
     print("Rendering GIFs...")
     return render_template("index.html", gifs=gifs)
+
 
 @app.route('/typeahead', methods=['POST', 'GET'])
 def typeahead():
@@ -51,20 +54,23 @@ def typeahead():
     user_input = ''
     if 'user_input' in request.form:
         user_input = request.form['user_input']
-    response = requests.get(f'https://api.tenor.com/v1/search?key={key}&q={user_input}&limit={12}')
+    response = requests.get(
+        f'https://api.tenor.com/v1/search?key={key}&q={user_input}&limit={12}')
     gifs = response.json()["results"]
     return render_template("gif.html", gifs=gifs)
 
-@app.route('/speak')
-def speak():
-    """
-    A function for searching gifs using Voice command.
-    This route will be used when the microphone Icon is pressed
-    it will call the previous speech function and pass the returned string as
-    a query string
-    """
-    query = recognize_speech()
-    return redirect('/?query=' + escape(query))
+
+# @app.route('/speak')
+# def speak():
+#     """
+#     A function for searching gifs using Voice command.
+#     This route will be used when the microphone Icon is pressed
+#     it will call the previous speech function and pass the returned string as
+#     a query string
+#     """
+#     query = recognize_speech()
+#     return redirect('/?query=' + escape(query))
+
 
 if __name__ == '__main__':
     print("Starting Flask server...")
