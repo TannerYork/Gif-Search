@@ -5,12 +5,13 @@ jobs:
       - image: circleci/python:3.7.4
     steps:
       - checkout
-      - run: Install Pyaudio Dependencies
+      - run:
+          name: Install Pyaudio Dependencies
           command: |
             echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
             apt-get update && apt-get -y install portaudio19-dev python-pyaudio gcc g++ alsa-utils
       - run:
-          name: Install Python dependencies
+          name: Install Python Dependencies
           command: |
             echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
             pip install --user -r requirements.txt
