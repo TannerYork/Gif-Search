@@ -9,7 +9,7 @@ jobs:
           name: Install Pyaudio Dependencies
           command: |
             echo 'export PATH=~$PATH:~/.local/bin' >> $BASH_ENV && source $BASH_ENV
-            apt-get update && apt-get -y install portaudio19-dev python-pyaudio gcc g++ alsa-utils
+            sudo apt-get update && apt-get -y install portaudio19-dev python-pyaudio gcc g++ alsa-utils
       - run:
           name: Install Python Dependencies
           command: |
