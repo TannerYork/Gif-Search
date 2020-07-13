@@ -1,3 +1,6 @@
+[![Gif Search](https://circleci.com/gh/TannerYork/Gif-Search.svg?style=svg)](<LINK>) <br>
+[![Gif Search](https://circleci.com/gh/TannerYork/Gif-Search.svg?style=shield)](<LINK>)
+
 # How to Use This Code
 
 Create a .env file based on the .env.example file
