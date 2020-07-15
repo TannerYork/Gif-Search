@@ -1,6 +1,7 @@
 [![Gif Search](https://circleci.com/gh/TannerYork/Gif-Search.svg?style=svg)](<LINK>) <br>
 [![Gif Search](https://circleci.com/gh/TannerYork/Gif-Search.svg?style=shield)](<LINK>) <br>
-![Gif Search](https://img.shields.io/docker/image-size/tannerwyork/gif-search/latest)
+![Gif Search](https://img.shields.io/docker/image-size/tannerwyork/gif-search/latest) <br>
+![Gif Search Web](https://img.shields.io/website?down_color=red&down_message=offline&up_color=light%20green&up_message=online&url=https%3A%2F%2Fgif-search.caprover.dev.tanneryork.tech%2F)
 
 # How to Use This Code
 
